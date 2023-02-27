@@ -1,3 +1,4 @@
+import 'devextreme/dist/css/dx.light.css';
 import React from 'react';
 import {Home, ExchangeHosts, ExchangeOperations, ExchangeLogs, Groups, Sent, Queue, Procedures, Exceptions, Value, ExchangeArchives} from './pages';
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
