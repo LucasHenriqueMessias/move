@@ -18,14 +18,14 @@ namespace oraclebam.Repository
             return retorno;
         }
 
-        public async Task<List<MvSysSefExchangeFile>> AddExchangeFile(MvSysSefExchangeFile ExchangeFile)
+        public async Task<MvSysSefExchangeFile> AddExchangeFile(MvSysSefExchangeFile ExchangeFile)
         {
            await _dbContext.MvSysSefExchangeFiles.AddAsync(ExchangeFile);
             await _dbContext.SaveChangesAsync();
             return ExchangeFile;
         }
 
-        public async Task<List<MvSysSefExchangeFile>> UpdateExchangeFile(MvSysSefExchangeFile exchangeFile, long SefID)
+        public async Task<MvSysSefExchangeFile> UpdateExchangeFile(MvSysSefExchangeFile exchangeFile, long SefID)
         {
             MvSysSefExchangeFile mvSysSefExchangeFileID = await SearchExchangeFile(SefID);
 

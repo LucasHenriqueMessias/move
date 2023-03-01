@@ -12,16 +12,16 @@ namespace oraclebam.Repository
             _dbContext = dbContext;
         }
 
-        public async Task<List<MvSysSegEmailGroup>> AddEmail(MvSysSegEmailGroup EmailGroup)
+        public async Task<MvSysSegEmailGroup> AddEmail(MvSysSegEmailGroup emailGroup)
         {
-            await _dbContext.MvSysSegEmailGroups.AddAsync(EmailGroup);
+            await _dbContext.MvSysSegEmailGroups.AddAsync(emailGroup);
             await _dbContext.SaveChangesAsync();
-            return EmailGroup;
+            return emailGroup;
         }
 
-        public async Task<bool> DeleteEmail(string SegGroupName)
+        public async Task<bool> DeleteEmail(string segGroupName)
         {
-            MvSysSegEmailGroup GroupName = await SearchByGroupEmail(SegGroupName) ?? throw new Exception("Nome do grupo para exclusão não encontrada");
+            MvSysSegEmailGroup GroupName = await SearchByGroupEmail(segGroupName) ?? throw new Exception("Nome do grupo para exclusão não encontrada");
             _dbContext.MvSysSegEmailGroups.Remove(GroupName);
             await _dbContext.SaveChangesAsync() ;
             return true;
@@ -33,14 +33,14 @@ namespace oraclebam.Repository
             return retorno;
         }
 
-        public async Task<MvSysSegEmailGroup> SearchByGroupEmail(string SegGroupName)
+        public async Task<MvSysSegEmailGroup> SearchByGroupEmail(string segGroupName)
         {
-            return await _dbContext.MvSysSegEmailGroups.FirstAsync(x => x.SegGroupName == SegGroupName);
+            return await _dbContext.MvSysSegEmailGroups.FirstOrDefaultAsync(x => x.SegGroupName == segGroupName);
         }
 
-        public async Task<List<MvSysSegEmailGroup>> UpdateEmail(MvSysSegEmailGroup EmailGroup, string SegGroupName)
+        public async Task<MvSysSegEmailGroup> UpdateEmail(MvSysSegEmailGroup EmailGroup, string segGroupName)
         {
-            MvSysSegEmailGroup GroupName = await SearchByGroupEmail(SegGroupName) ?? throw new Exception("Nome do email para atualização não encontrado.");
+            MvSysSegEmailGroup GroupName = await SearchByGroupEmail(segGroupName) ?? throw new Exception("Nome do email para atualização não encontrado.");
             GroupName.SegDescription = EmailGroup.SegDescription;
             GroupName.SegGroupName = EmailGroup.SegGroupName;
             GroupName.SegCompany = EmailGroup.SegCompany;

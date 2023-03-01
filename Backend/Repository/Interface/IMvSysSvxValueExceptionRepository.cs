@@ -5,9 +5,9 @@ namespace oraclebam.Repository.Interface
     public interface IMvSysSvxValueExceptionRepository
     {
         Task<List<MvSysSvxValueException>> ValueExceptionAPI();
-        Task<List<MvSysSvxValueException>> AddValueException(MvSysSvxValueException e);
-        Task<List<MvSysSvxValueException>> UpdateValueException(MvSysSvxValueException e, string SvxCompany);
+        Task<MvSysSvxValueException> AddValueException(MvSysSvxValueException e);
+        Task<MvSysSvxValueException> UpdateValueException(MvSysSvxValueException e, string svxCompany);
         Task<bool> DeleteValueException(string SvxCompany);
-        Task<List<MvSysSvxValueException>> SearchByValue(string SvxCompany);
+        Task<MvSysSvxValueException> SearchByValue(string SvxCompany);
     }
 }

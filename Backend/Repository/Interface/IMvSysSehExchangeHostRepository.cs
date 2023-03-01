@@ -5,9 +5,9 @@ namespace oraclebam.Repository.Interface
     public interface IMvSysSehExchangeHostRepository
     {
         Task<List<MvSysSehExchangeHost>> ListarExchangeHost();
-        Task<List<MvSysSehExchangeHost>> AddExchangeHost(List<MvSysSehExchangeHost> exchangeHost);
-        Task<List<MvSysSehExchangeHost>> UpdateExchangeHost(MvSysSehExchangeHost exchangeHost, string SehCompany, List<MvSysSehExchangeHost> exchangeHostSehCompany);
+        Task<MvSysSehExchangeHost> AddExchangeHost(MvSysSehExchangeHost exchangeHost);
+        Task<MvSysSehExchangeHost> UpdateExchangeHost(MvSysSehExchangeHost exchangeHost, string SehCompany);
         Task<bool> DeleteExchangeHost(string SehCompany);
-        Task<MvSysSehExchangeHost> SearchExchangeHost(string SehCompany);
+        Task<MvSysSehExchangeHost> SearchExchangeHost(string sehCompany);
     }
 }

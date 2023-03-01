@@ -13,7 +13,7 @@ namespace oraclebam.Repository
             _context = context;
         }
 
-        public async Task<List<MvSysSjqJobQueue>> AddQueue(MvSysSjqJobQueue q)
+        public async Task<MvSysSjqJobQueue> AddQueue(MvSysSjqJobQueue q)
         {
             await _context.MvSysSjqJobQueues.AddAsync(q);
             await _context.SaveChangesAsync();
@@ -39,7 +39,7 @@ namespace oraclebam.Repository
             return await _context.MvSysSjqJobQueues.FirstOrDefaultAsync(x => x.SjqProcedureName == SjqProcedureName);
         }
 
-        public async Task<List<MvSysSjqJobQueue>> UpdateQueue(MvSysSjqJobQueue q, string SjqProcedureName)
+        public async Task<MvSysSjqJobQueue> UpdateQueue(MvSysSjqJobQueue q, string SjqProcedureName)
         {
             MvSysSjqJobQueue ProcName = await SearchByProcedureName(SjqProcedureName) ?? throw new Exception("Nome da Procedure não encontrada para excluir");
             ProcName.SjqStatus = q.SjqStatus;

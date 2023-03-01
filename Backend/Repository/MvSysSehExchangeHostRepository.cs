@@ -12,7 +12,7 @@ namespace oraclebam.Repository
             _dbContext = dbContext;
         }
 
-        public async Task<List<MvSysSehExchangeHost>> AddExchangeHost(List<MvSysSehExchangeHost> exchangeHost)
+        public async Task<MvSysSehExchangeHost> AddExchangeHost(MvSysSehExchangeHost exchangeHost)
         {
             await _dbContext.MvSysSehExchangeHosts.AddAsync(exchangeHost);
             await _dbContext.SaveChangesAsync();
@@ -33,12 +33,12 @@ namespace oraclebam.Repository
             return retorno;
         }
 
-        public async Task<MvSysSehExchangeHost> SearchExchangeHost(string SehCompany)
+        public async Task<MvSysSehExchangeHost> SearchExchangeHost(string sehCompany)
         {
-            return await _dbContext.MvSysSehExchangeHosts.FirstOrDefaultAsync(x => x.SehCompany == SehCompany);
+            return await _dbContext.MvSysSehExchangeHosts.FirstOrDefaultAsync(x => x.SehCompany == sehCompany);
         }
 
-        public async Task<List<MvSysSehExchangeHost>> UpdateExchangeHost(MvSysSehExchangeHost exchangeHost, string SehCompany, List<MvSysSehExchangeHost> exchangeHostSehCompany)
+        public async Task<MvSysSehExchangeHost> UpdateExchangeHost(MvSysSehExchangeHost exchangeHost, string SehCompany)
         {
             MvSysSehExchangeHost ExchangeHostSehCompany = await SearchExchangeHost(SehCompany) ?? throw new Exception("Username para atualização não encontrado.");
             ExchangeHostSehCompany.SehPortFtp = exchangeHost.SehPortFtp;
@@ -53,7 +53,7 @@ namespace oraclebam.Repository
             _dbContext.MvSysSehExchangeHosts.Update(ExchangeHostSehCompany);
             await _dbContext.SaveChangesAsync();
 
-            return exchangeHostSehCompany; 
+            return ExchangeHostSehCompany; 
         }
     }
 }

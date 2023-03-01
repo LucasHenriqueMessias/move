@@ -12,7 +12,7 @@ namespace oraclebam.Repository
             _dbContext = dbContext;
         }
 
-        public async Task<List<MvSysSeoExchangeOperation>> AddExchangeOperation(MvSysSeoExchangeOperation exchangeOperation)
+        public async Task<MvSysSeoExchangeOperation> AddExchangeOperation(MvSysSeoExchangeOperation exchangeOperation)
         {
             await _dbContext.MvSysSeoExchangeOperations.AddAsync(exchangeOperation);
             await _dbContext.SaveChangesAsync();
@@ -38,7 +38,7 @@ namespace oraclebam.Repository
             return await _dbContext.MvSysSeoExchangeOperations.FirstOrDefaultAsync(x => x.SeoOperation == seoOperation);
         }
 
-        public async Task<List<MvSysSeoExchangeOperation>> UpdateExchangeOperation(MvSysSeoExchangeOperation exchangeOperation, string seoOperation)
+        public async Task<MvSysSeoExchangeOperation> UpdateExchangeOperation(MvSysSeoExchangeOperation exchangeOperation, string seoOperation)
         {
             MvSysSeoExchangeOperation exchange = await SearchExchangeOperation(seoOperation);
 

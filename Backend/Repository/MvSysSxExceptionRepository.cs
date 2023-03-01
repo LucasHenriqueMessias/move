@@ -18,5 +18,10 @@ namespace oraclebam.Repository
             var retorno = await _Context.MvSysSxExceptions.ToListAsync();
             return retorno;
         }
+
+        public async Task<MvSysSxException> SearchByException(string sxCompany)
+        {
+            return await _Context.MvSysSxExceptions.FirstOrDefaultAsync(x => x.SxCompany == sxCompany);
+        }
     }
 }

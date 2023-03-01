@@ -13,7 +13,7 @@ namespace oraclebam.Repository
             _context = context;
         }
 
-        public async Task<List<MvSysSjJob>> AddJob(MvSysSjJob Sjob)
+        public async Task<MvSysSjJob> AddJob(MvSysSjJob Sjob)
         {
             await _context.MvSysSjJobs.AddAsync(Sjob);
             await _context.SaveChangesAsync();
@@ -27,15 +27,24 @@ namespace oraclebam.Repository
         }
 
 
-        public async Task<List<MvSysSjJob>> SearchJob(string ProcedureName)
+        public async Task<MvSysSjJob> SearchJob(string ProcedureName)
         {
-            //erro na linha
             return await _context.MvSysSjJobs.FirstOrDefaultAsync(x => x.SjProcedureName == ProcedureName);
         }
 
-        public Task<List<MvSysSjJob>> UpdateJob(MvSysSjJob job, string ProcedureName)
+        public async Task<MvSysSjJob> UpdateJob(MvSysSjJob job, string ProcedureName)
         {
-            throw new NotImplementedException();
+            MvSysSjJob sJob = await SearchJob(ProcedureName) ?? throw new Exception("Job não encontrado");
+
+            sJob.SjProcedureName = job.SjProcedureName;
+            sJob.SjUserCreated = job.SjUserCreated;
+            sJob.SjUserUpdated = job.SjUserUpdated;
+            sJob.SjDescription = job.SjDescription;
+            sJob.SjDatetimeUpdated = job.SjDatetimeUpdated;
+            sJob.SjDatetimeCreated = job.SjDatetimeCreated;
+
+            _context.MvSysSjJobs.Update(sJob);
+            return sJob;
         }
 
        public async Task<bool> DeleteJob(string ProcedureName)
