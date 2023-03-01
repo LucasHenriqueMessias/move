@@ -22,5 +22,34 @@ namespace oraclebam.Controllers
             List<MvSysSegEmailGroup> Lista = await _repository.ListarEmails();
             return Ok(Lista);
         }
+
+        [HttpGet("{segGroupName}")]
+        public async Task<ActionResult<MvSysSegEmailGroup>> SearchByGroupEmail(string segGroupName)
+        {
+            MvSysSegEmailGroup EmailSearch = await _repository.SearchByGroupEmail(segGroupName);
+            return Ok(EmailSearch);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<MvSysSegEmailGroup>> AddEmail([FromBody] MvSysSegEmailGroup emailGroup)
+        {
+            MvSysSegEmailGroup EmailSearch = await _repository.AddEmail(emailGroup);
+            return Ok(EmailSearch);
+        }
+
+        [HttpPut("{segGroupName}")]
+        public async Task<ActionResult<MvSysSegEmailGroup>> UpdateEmail([FromBody] MvSysSegEmailGroup emailGroup, string segGroupName)
+        {
+            emailGroup.SegGroupName = segGroupName;
+            MvSysSegEmailGroup UpdateEmail = await _repository.UpdateEmail(emailGroup, segGroupName);
+            return Ok(UpdateEmail);
+        }
+
+        //[HttpDelete("{segGroupName}")]
+        //public async Task<ActionResult<MvSysSegEmailGroup>> DeleteEmail(long segGroupName)
+        //{
+          //  bool saida = await _repository.DeleteEmail(segGroupName);
+            //return Ok(saida);
+        //}
     }
 }

@@ -22,5 +22,34 @@ namespace oraclebam.Controllers
             List<MvSysSehExchangeHost> Lista = await _mvSysSehExchangeHostRepository.ListarExchangeHost();
             return Ok(Lista);
         }
+
+        [HttpGet("search/{sehCompany}")]
+        public async Task<ActionResult<MvSysSehExchangeHost>> SearchExchangeHost(string sehCompany)
+        {
+            MvSysSehExchangeHost exchangeHost = await _mvSysSehExchangeHostRepository.SearchExchangeHost(sehCompany);
+            return Ok(exchangeHost);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<MvSysSehExchangeHost>> AddExchangeHost(MvSysSehExchangeHost exchangeHost)
+        {
+            MvSysSehExchangeHost sehExchangeHost = await _mvSysSehExchangeHostRepository.AddExchangeHost(exchangeHost);
+            return Ok(sehExchangeHost);
+        }
+
+        [HttpPut("put/{SehCompany}")]
+        public async Task<ActionResult<MvSysSehExchangeHost>> UpdateExchangeHost([FromBody] MvSysSehExchangeHost exchangeHost, string SehCompany)
+        {
+            exchangeHost.SehCompany = SehCompany;
+            MvSysSehExchangeHost sehExchangeHost = await _mvSysSehExchangeHostRepository.UpdateExchangeHost(exchangeHost, SehCompany);
+            return Ok(sehExchangeHost);
+        }
+
+        [HttpDelete]
+        public async Task<ActionResult<MvSysSehExchangeHost>> DeleteExchangeHost(string SehCompany)
+        {
+            bool saida = await _mvSysSehExchangeHostRepository.DeleteExchangeHost(SehCompany);
+            return Ok(saida);
+        }
     }
 }

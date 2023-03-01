@@ -18,8 +18,37 @@ namespace oraclebam.Controllers
         [HttpGet]
         public async Task<ActionResult<List<MvSysSefExchangeFile>>> ListarExchangeFile()
         {
-           List<MvSysSefExchangeFile> Lista = await _mvSysSefExchangeFileRepository.ListarExchangeFile();
+            List<MvSysSefExchangeFile> Lista = await _mvSysSefExchangeFileRepository.ListarExchangeFile();
             return Ok(Lista);
+        }
+
+        [HttpGet("{SefID}")]
+        public async Task<ActionResult<MvSysSefExchangeFile>> SearchExchangeFile(long SefID)
+        {
+            MvSysSefExchangeFile exchangeFile = await _mvSysSefExchangeFileRepository.SearchExchangeFile(SefID);
+            return Ok(exchangeFile);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<MvSysSefExchangeFile>> AddExchangeFile([FromBody] MvSysSefExchangeFile exchangeFile)
+        {
+           MvSysSefExchangeFile File = await _mvSysSefExchangeFileRepository.AddExchangeFile(exchangeFile);
+            return Ok(File);
+        }
+
+        [HttpPut("{SefID}")]
+        public async Task<ActionResult<MvSysSefExchangeFile>> UpdateExchangeFile([FromBody] MvSysSefExchangeFile exchangeFile, long SefID)
+        {
+            exchangeFile.SefId = SefID;
+            MvSysSefExchangeFile UpdateExchange = await _mvSysSefExchangeFileRepository.UpdateExchangeFile(exchangeFile, SefID);
+            return Ok(UpdateExchange);
+        }
+
+        [HttpDelete("{SefID}")]
+        public async Task<ActionResult<MvSysSefExchangeFile>> DeleteExchangeFile(long SefID)
+        {
+            bool saida = await _mvSysSefExchangeFileRepository.DeleteExchangeFile(SefID);
+            return Ok(saida);
         }
     }
 }
