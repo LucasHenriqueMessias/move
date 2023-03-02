@@ -22,5 +22,35 @@ namespace oraclebam.Controllers
             List<QvSysSelExchangeLog> Lista = await _qvSysSelExchangeLogRepository.ListarExchangeLog();
             return Ok(Lista);
         }
+        
+        [HttpGet("search/exchangelog/{SelID}")]
+        public async Task<ActionResult<QvSysSelExchangeLog>> SearchExchangeLog(long SelId)
+        {
+            QvSysSelExchangeLog Lista = await _qvSysSelExchangeLogRepository.SearchExchangeLog(SelId);
+            return Ok(Lista);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<QvSysSelExchangeLog>> AddExchangeLog([FromBody] QvSysSelExchangeLog ExchangeLog)
+        {
+            QvSysSelExchangeLog Lista = await _qvSysSelExchangeLogRepository.AddExchangeLog(ExchangeLog);
+            return Ok(Lista);
+        }
+
+
+        [HttpPut]
+        public async Task<ActionResult<QvSysSelExchangeLog>> UpdateExchangeLog([FromBody] QvSysSelExchangeLog exchangeLog, long SelId)
+        {
+            exchangeLog.SelId = SelId;
+            QvSysSelExchangeLog Lista = await _qvSysSelExchangeLogRepository.UpdateExchangeLog(exchangeLog, SelId);
+            return Ok(Lista);
+        }
+
+        [HttpDelete]
+        public async Task<ActionResult<QvSysSelExchangeLog>> DeleteExchangeLog(long SelId)
+        {
+            bool Lista = await _qvSysSelExchangeLogRepository.DeleteExchangeLog(SelId);
+            return Ok(Lista);
+        }
     }
 }

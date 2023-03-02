@@ -61,10 +61,10 @@ namespace oraclebam.Models
                     .HasColumnType("DATE")
                     .HasColumnName("SVX_DATETIME_VALUE");
 
-               // entity.Property(e => e.SvxException)
-               //     .HasPrecision(4)
-               //     .HasColumnName("SVX_EXCEPTION");
-
+               /* entity.Property(e => e.SvxException)
+                    .HasPrecision(4)
+                    .HasColumnName("SVX_EXCEPTION");
+               */
                 entity.Property(e => e.SvxNumericValue)
                     .HasColumnType("NUMBER(14,4)")
                     .HasColumnName("SVX_NUMERIC_VALUE");
@@ -119,10 +119,10 @@ namespace oraclebam.Models
                     .IsUnicode(false)
                     .HasColumnName("SX_DESCRIPTION");
 
-              //  entity.Property(e => e.SxException)
-                //    .HasPrecision(4)
-                  //  .HasColumnName("SX_EXCEPTION");
-
+               /* entity.Property(e => e.SxException)
+                    .HasPrecision(4)
+                    .HasColumnName("SX_EXCEPTION");
+               */
                 entity.Property(e => e.SxModule)
                     .HasMaxLength(50)
                     .IsUnicode(false)
@@ -344,7 +344,7 @@ namespace oraclebam.Models
             
             modelBuilder.Entity<MvSysSefExchangeFile>(entity =>
             {
-                entity.HasNoKey();
+               // entity.HasNoKey();
 
                 entity.ToView("MV_SYS_SEF_EXCHANGE_FILE");
 

@@ -21,5 +21,33 @@ namespace oraclebam.Controllers
             List<MvSysSvxValueException> Lista = await _repository.ValueExceptionAPI();
             return Ok(Lista);
         }
+
+        [HttpGet("company/{SvxCompany}")]
+        public async Task<ActionResult<MvSysSvxValueException>> SearchByValue(string SvxCompany)
+        {
+            MvSysSvxValueException Lista = await _repository.SearchByValue(SvxCompany);
+            return Ok(Lista);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<MvSysSvxValueException>> AddValueException([FromBody] MvSysSvxValueException e)
+        {
+            MvSysSvxValueException Lista = await _repository.AddValueException(e);
+            return Ok(Lista);
+        }
+        [HttpPut]
+        public async Task<ActionResult<MvSysSvxValueException>> UpdateValueException([FromBody] MvSysSvxValueException e, string svxCompany)
+        {
+            e.SvxCompany = svxCompany;
+            MvSysSvxValueException Lista = await _repository.UpdateValueException(e, svxCompany);
+            return Ok(Lista);
+        }
+
+        [HttpDelete]
+        public async Task<ActionResult<MvSysSvxValueException>> DeleteValueException(string SvxCompany)
+        {
+            bool Lista = await _repository.DeleteValueException(SvxCompany);
+            return Ok(Lista);
+        }
     }
 }

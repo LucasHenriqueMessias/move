@@ -23,7 +23,7 @@ namespace oraclebam.Controllers
             return Ok(Lista);
         }
 
-        [HttpGet("search/{SjqProcedureName")]
+        [HttpGet("search/{SjqProcedureName}")]
         public async Task<ActionResult<MvSysSjqJobQueue>> SearchByProcedureName(string SjqProcedureName)
         {
             MvSysSjqJobQueue Lista = await _repository.SearchByProcedureName(SjqProcedureName);

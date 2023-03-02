@@ -6,7 +6,7 @@ namespace oraclebam.Models
     public partial class MvSysSxException
     {
         public string SxCompany { get; set; } = null!;
-       // public byte SxException { get; set; }
+        //public byte SxException { get; set; }
         public string SxModule { get; set; } = null!;
         public string? SxTable { get; set; }
         public string? SxColumn { get; set; }

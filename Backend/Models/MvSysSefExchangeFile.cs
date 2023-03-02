@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace oraclebam.Models
 {
     public partial class MvSysSefExchangeFile
     {
         public string SefCompany { get; set; } = null!;
+        [Key]
         public long SefId { get; set; }
         public string SefOperation { get; set; } = null!;
         public string SefSourceHost { get; set; } = null!;

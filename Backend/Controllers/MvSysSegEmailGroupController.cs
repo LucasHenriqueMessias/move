@@ -45,11 +45,11 @@ namespace oraclebam.Controllers
             return Ok(UpdateEmail);
         }
 
-        //[HttpDelete("{segGroupName}")]
-        //public async Task<ActionResult<MvSysSegEmailGroup>> DeleteEmail(long segGroupName)
-        //{
-          //  bool saida = await _repository.DeleteEmail(segGroupName);
-            //return Ok(saida);
-        //}
+        [HttpDelete("{segGroupName}")]
+        public async Task<ActionResult<MvSysSegEmailGroup>> DeleteEmail(string segGroupName)
+        {
+            bool saida = await _repository.DeleteEmail(segGroupName);
+            return Ok(saida);
+        }
     }
 }
