@@ -30,7 +30,10 @@ namespace oraclebam.Models
 
              modelBuilder.Entity<MvSysSvxValueException>(entity =>
             {
-                entity.HasNoKey();
+                entity.ToTable("\"MV_SYS_SVX_VALUE_EXCEPTION").HasKey(e => new
+                {
+                    e.SvxCompany
+                });
 
                 entity.ToView("MV_SYS_SVX_VALUE_EXCEPTION");
 
@@ -87,7 +90,10 @@ namespace oraclebam.Models
             
             modelBuilder.Entity<MvSysSxException>(entity =>
             {
-                entity.HasNoKey();
+                entity.ToTable("MV_SYS_SX_EXCEPTION").HasKey(e => new
+                {
+                    e.SxCompany
+                });
 
                 entity.ToView("MV_SYS_SX_EXCEPTION");
 
@@ -156,7 +162,10 @@ namespace oraclebam.Models
 
               modelBuilder.Entity<MvSysSjJob>(entity =>
             {
-                entity.HasNoKey();
+                entity.ToTable("MV_SYS_SJ_JOB").HasKey(e => new
+                {
+                    e.SjProcedureName
+                });
 
                 entity.ToView("MV_SYS_SJ_JOB");
 
@@ -191,7 +200,10 @@ namespace oraclebam.Models
 
             modelBuilder.Entity<MvSysSjqJobQueue>(entity =>
             {
-                entity.HasNoKey();
+                entity.ToTable("MV_SYS_SJQ_JOB_QUEUE").HasKey(e => new
+                {
+                    e.SjqProcedureName
+                });
 
                 entity.ToView("MV_SYS_SJQ_JOB_QUEUE");
 
@@ -297,7 +309,10 @@ namespace oraclebam.Models
 
              modelBuilder.Entity<QvSysSsmSystemMail>(entity =>
             {
-                entity.HasNoKey();
+                entity.ToTable("QV_SYS_SSM_SYSTEM_MAIL").HasKey(e => new
+                {
+                    e.SsmSentDatetime
+                });
 
                 entity.ToView("QV_SYS_SSM_SYSTEM_MAIL");
 
@@ -322,7 +337,10 @@ namespace oraclebam.Models
 
               modelBuilder.Entity<MvSysSegEmailGroup>(entity =>
             {
-                entity.HasNoKey();
+                entity.ToTable("MV_SYS_SEG_EMAIL_GROUP").HasKey(e => new
+                {
+                    e.SegGroupName
+                });
 
                 entity.ToView("MV_SYS_SEG_EMAIL_GROUP");
 
@@ -344,7 +362,10 @@ namespace oraclebam.Models
             
             modelBuilder.Entity<MvSysSefExchangeFile>(entity =>
             {
-               // entity.HasNoKey();
+                entity.ToTable("MV_SYS_SEF_EXCHANGE_FILE").HasKey(e => new
+                {
+                    e.SefId
+                });
 
                 entity.ToView("MV_SYS_SEF_EXCHANGE_FILE");
 
@@ -443,7 +464,10 @@ namespace oraclebam.Models
             });
             modelBuilder.Entity<QvSysSelExchangeLog>(entity =>
             {
-                entity.HasNoKey();
+                entity.ToTable("QV_SYS_SEL_EXCHANGE_LOG").HasKey(e => new
+                {
+                    e.SelId
+                });
 
                 entity.ToView("QV_SYS_SEL_EXCHANGE_LOG");
 
@@ -482,7 +506,10 @@ namespace oraclebam.Models
 
             modelBuilder.Entity<MvSysSehExchangeHost>(entity =>
             {
-                entity.HasNoKey();
+                entity.ToTable("MV_SYS_SEH_EXCHANGE_HOST").HasKey(e => new
+                {
+                    e.SehCompany
+                });
 
                 entity.ToView("MV_SYS_SEH_EXCHANGE_HOST");
 
@@ -527,7 +554,10 @@ namespace oraclebam.Models
 
             modelBuilder.Entity<MvSysSeoExchangeOperation>(entity =>
             {
-                entity.HasNoKey();
+                entity.ToTable("MV_SYS_SEO_EXCHANGE_OPERATION").HasKey(e => new
+                {
+                    e.SeoOperation
+                });
 
                 entity.ToView("MV_SYS_SEO_EXCHANGE_OPERATION");
 

@@ -20,8 +20,8 @@ namespace oraclebam.Repository
 
         public async Task<MvSysSefExchangeFile> AddExchangeFile(MvSysSefExchangeFile ExchangeFile)
         {
-           await _dbContext.MvSysSefExchangeFiles.AddAsync(ExchangeFile);
-            await _dbContext.SaveChangesAsync();
+            await _dbContext.MvSysSefExchangeFiles.AddAsync(ExchangeFile);
+            await _dbContext.SaveChangesAsync(); 
             return ExchangeFile;
         }
 
@@ -64,13 +64,7 @@ namespace oraclebam.Repository
 
         public async Task<bool> DeleteExchangeFile(long SefID)
         {
-            MvSysSefExchangeFile mvSysSefExchangeFileID = await SearchExchangeFile(SefID);
-
-            if (mvSysSefExchangeFileID == null)
-            {
-                throw new Exception("ID para exclusão não encontrado");
-            }
-
+            MvSysSefExchangeFile mvSysSefExchangeFileID = await SearchExchangeFile(SefID) ?? throw new Exception("ID para exclusão não encontrado");
             _dbContext.MvSysSefExchangeFiles.Remove(mvSysSefExchangeFileID);
             await _dbContext.SaveChangesAsync();
             return true;
