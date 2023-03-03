@@ -28,6 +28,9 @@ namespace oraclebam
             builder.Services.AddScoped<IMvSysSjJobRepository, MvSysSjJobRepository>();
             builder.Services.AddScoped<IMvSysSxExceptionRepository, MvSysSxExceptionRepository>();
             builder.Services.AddScoped<IMvSysSvxValueExceptionRepository, MvSysSvxValueExceptionRepository>();
+
+            builder.Services.AddCors();
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -38,6 +41,12 @@ namespace oraclebam
             }
 
             app.UseHttpsRedirection();
+            app.UseCors(c =>
+            {
+                c.AllowAnyHeader();
+                c.AllowAnyMethod();
+                c.AllowAnyOrigin();
+            });
 
             #region [Cors]
             builder.Services.AddCors();
