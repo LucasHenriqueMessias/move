@@ -1,5 +1,5 @@
 import React  from "react";
-import SchaefflerLogo from '../img/cc2197bc1be13300a810520e6e4bcbc4.iix'
+import SchaefflerLogo from '../../img/cc2197bc1be13300a810520e6e4bcbc4.iix'
 
 
 const Nav = () => (
