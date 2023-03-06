@@ -22,7 +22,7 @@ namespace oraclebam.Controllers
             return Ok(Lista);
         }
 
-        [HttpGet("Search/{seoOperation}")]
+        [HttpGet("search/{seoOperation}")]
         public async Task<ActionResult<MvSysSeoExchangeOperation>> SearchExchangeOperation(string seoOperation)
         {
             MvSysSeoExchangeOperation Lista = await _controller.SearchExchangeOperation(seoOperation);
@@ -35,7 +35,7 @@ namespace oraclebam.Controllers
             MvSysSeoExchangeOperation Lista = await _controller.AddExchangeOperation(exchangeOperation);
             return Ok(Lista);
         }
-        [HttpPut("Update/{seoOperation}")]
+        [HttpPut("update/{seoOperation}")]
         public async Task<ActionResult<MvSysSeoExchangeOperation>> UpdateExchangeOperation([FromBody] MvSysSeoExchangeOperation exchangeOperation, string seoOperation)
         {
             exchangeOperation.SeoOperation = seoOperation;

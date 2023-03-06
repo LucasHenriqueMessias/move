@@ -22,7 +22,7 @@ namespace oraclebam.Controllers
             return Ok(Lista);
         }
 
-        [HttpGet("company/{SvxCompany}")]
+        [HttpGet("search/{SvxCompany}")]
         public async Task<ActionResult<MvSysSvxValueException>> SearchByValue(string SvxCompany)
         {
             MvSysSvxValueException Lista = await _repository.SearchByValue(SvxCompany);

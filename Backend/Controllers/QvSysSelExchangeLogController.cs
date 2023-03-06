@@ -23,7 +23,7 @@ namespace oraclebam.Controllers
             return Ok(Lista);
         }
         
-        [HttpGet("search/exchangelog/{SelID}")]
+        [HttpGet("search/{SelID}")]
         public async Task<ActionResult<QvSysSelExchangeLog>> SearchExchangeLog(long SelId)
         {
             QvSysSelExchangeLog Lista = await _qvSysSelExchangeLogRepository.SearchExchangeLog(SelId);

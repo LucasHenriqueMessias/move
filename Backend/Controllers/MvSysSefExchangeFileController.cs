@@ -22,7 +22,7 @@ namespace oraclebam.Controllers
             return Ok(Lista);
         }
 
-        [HttpGet("{SefID}")]
+        [HttpGet("search/{SefID}")]
         public async Task<ActionResult<MvSysSefExchangeFile>> SearchExchangeFile(long SefID)
         {
             MvSysSefExchangeFile exchangeFile = await _mvSysSefExchangeFileRepository.SearchExchangeFile(SefID);
@@ -36,7 +36,7 @@ namespace oraclebam.Controllers
             return Ok(File);
         }
 
-        [HttpPut("{SefID}")]
+        [HttpPut("update/{SefID}")]
         public async Task<ActionResult<MvSysSefExchangeFile>> UpdateExchangeFile([FromBody] MvSysSefExchangeFile exchangeFile, long SefID)
         {
             exchangeFile.SefId = SefID;
@@ -44,7 +44,7 @@ namespace oraclebam.Controllers
             return Ok(UpdateExchange);
         }
 
-        [HttpDelete("{SefID}")]
+        [HttpDelete("delete/{SefID}")]
         public async Task<ActionResult<MvSysSefExchangeFile>> DeleteExchangeFile(long SefID)
         {
             bool saida = await _mvSysSefExchangeFileRepository.DeleteExchangeFile(SefID);

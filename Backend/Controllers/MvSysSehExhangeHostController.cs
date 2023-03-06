@@ -37,7 +37,7 @@ namespace oraclebam.Controllers
             return Ok(sehExchangeHost);
         }
 
-        [HttpPut("put/{SehCompany}")]
+        [HttpPut("update/{SehCompany}")]
         public async Task<ActionResult<MvSysSehExchangeHost>> UpdateExchangeHost([FromBody] MvSysSehExchangeHost exchangeHost, string SehCompany)
         {
             exchangeHost.SehCompany = SehCompany;

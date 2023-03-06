@@ -23,7 +23,7 @@ namespace oraclebam.Controllers
             return Ok(Lista);
         }
 
-        [HttpGet("{segGroupName}")]
+        [HttpGet("search/{segGroupName}")]
         public async Task<ActionResult<MvSysSegEmailGroup>> SearchByGroupEmail(string segGroupName)
         {
             MvSysSegEmailGroup EmailSearch = await _repository.SearchByGroupEmail(segGroupName);
@@ -37,7 +37,7 @@ namespace oraclebam.Controllers
             return Ok(EmailSearch);
         }
 
-        [HttpPut("{segGroupName}")]
+        [HttpPut("update/{segGroupName}")]
         public async Task<ActionResult<MvSysSegEmailGroup>> UpdateEmail([FromBody] MvSysSegEmailGroup emailGroup, string segGroupName)
         {
             emailGroup.SegGroupName = segGroupName;
@@ -45,7 +45,7 @@ namespace oraclebam.Controllers
             return Ok(UpdateEmail);
         }
 
-        [HttpDelete("{segGroupName}")]
+        [HttpDelete("delete/{segGroupName}")]
         public async Task<ActionResult<MvSysSegEmailGroup>> DeleteEmail(string segGroupName)
         {
             bool saida = await _repository.DeleteEmail(segGroupName);

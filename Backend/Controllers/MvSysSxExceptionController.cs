@@ -37,7 +37,7 @@ namespace oraclebam.Controllers
             return Ok(Lista);
         }
 
-        [HttpPut("company/exception/{sxCompany}")]
+        [HttpPut("update/{sxCompany}")]
         public async Task<ActionResult<MvSysSxException>> UpdateByException([FromBody] MvSysSxException Exception, string sxCompany)
         {
             Exception.SxCompany = sxCompany;
