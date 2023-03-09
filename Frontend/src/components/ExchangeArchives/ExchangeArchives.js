@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 
 import DataGrid, {
-  Column, FilterRow, HeaderFilter,
+  Column, FilterRow, HeaderFilter, Editing
 } from 'devextreme-react/data-grid';
 //import SelectBox from 'devextreme-react/select-box';
 //import CheckBox from 'devextreme-react/check-box';
@@ -33,7 +33,11 @@ const ExchangeArchives = () => {
           showBorders={true}>
              <FilterRow visible={true}/>
             <HeaderFilter visible={true} />
-            
+            <Editing
+            mode="row"
+            allowUpdating={true}
+            allowDeleting={true}
+            allowAdding={true} />
             
                 <Column dataField="sefCompany"/> 
                 <Column dataField="sefId" dataType="number"/>

@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import DataGrid, { Column, FilterRow, HeaderFilter } from 'devextreme-react/data-grid';
+import DataGrid, { Column, FilterRow, HeaderFilter, Editing } from 'devextreme-react/data-grid';
 //import SelectBox from 'devextreme-react/select-box';
 //import CheckBox from 'devextreme-react/check-box';
 
@@ -29,7 +29,12 @@ const Sent = () => {
           highlightChanges={true}
           showBorders={true}>
             <FilterRow visible={true}/>
-            <HeaderFilter visible={true} />       
+            <HeaderFilter visible={true} /> 
+            <Editing
+            mode="row"
+            allowUpdating={true}
+            allowDeleting={true}
+            allowAdding={true} />      
                 <Column dataField="ssmUsername"/> 
                 <Column dataField="ssmSentDatetime" dataType="datetime" format="yyyy-mm-dd'T'hh:mm:ss"/>
                 <Column dataField="ssmSubject"/> 
