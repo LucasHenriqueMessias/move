@@ -6,8 +6,21 @@ import DataGrid, { Column, FilterRow, HeaderFilter, Editing } from 'devextreme-r
 
 const ExchangeLogs = () => {
 
-    const [posts, setPosts] = useState([]);
+  const LogsJson = {
+    'selCompany' : '', 
+    'selId" dataType="number' : '',
+    'selType' : '', 
+    'selDate' : '',
+    'selMessage' : '', 
+    'selUserAlt' : '', 
+    'selDateAlt"' : ''
+  }
 
+  const key = { 'selId': ''}
+    const [posts, setPosts] = useState([]);
+    const [insertJson, setInsert] = useState(LogsJson);
+    const [updateJson, setUpdate] = useState(LogsJson);
+    const [deleteJson, setDelete] = useState(key)
     useEffect(() =>{
         fetch("https://localhost:7063/api/QvSysSelExchangeLog")
         .then(response => response.json())
@@ -27,7 +40,14 @@ const ExchangeLogs = () => {
           filterSyncEnabled={true}
           repaintChangesOnly={true}
           highlightChanges={true}
-          showBorders={true}>
+          showBorders={true}
+          onRowInserting={setInsert}
+          onRowInserted={console.log(insertJson.data)}
+          onRowUpdating={setUpdate}
+          onRowUpdated={console.log(updateJson.data)}
+          onRowRemoving={setDelete}
+          onRowRemoved={console.log(deleteJson.data)}
+          >
             <FilterRow visible={true}/>
             <HeaderFilter visible={true} />
             <Editing

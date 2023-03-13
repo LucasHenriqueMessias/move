@@ -1,13 +1,26 @@
 import React, {useEffect, useState} from 'react';
 import DataGrid, { Column, FilterRow, HeaderFilter, Editing } from 'devextreme-react/data-grid';
-//import SelectBox from 'devextreme-react/select-box';
-//import CheckBox from 'devextreme-react/check-box';
+
 
 
 const ExchangeHosts = () => {
 
+    const HostJson = {
+      'sehCompany':'', 
+      'sehHost':'', 
+      'sehPortFtp" dataType="number':'',
+      'sehUsername':'', 
+      'sehPassword':'', 
+      'sehFileProtocol':'', 
+      'sehUserAlt':'', 
+      'sehDateAlt':''
+    }
+    const key = { 'sehCompany' : ''};
+    
     const [posts, setPosts] = useState([]);
-
+    const [insertJson, setInsert] = useState(HostJson);
+    const [updateJson, setUpdate] = useState(HostJson);
+    const [deleteJson, setDelete] = useState(key)
     useEffect(() =>{
         fetch("https://localhost:7063/api/MvSysSehExhangeHost")
         .then(response => response.json())
@@ -27,7 +40,14 @@ const ExchangeHosts = () => {
           filterSyncEnabled={true}
           repaintChangesOnly={true}
           highlightChanges={true}
-          showBorders={true}>
+          showBorders={true}
+          onRowInserting={setInsert}
+          onRowInserted={console.log(insertJson.data)}
+          onRowUpdating={setUpdate}
+          onRowUpdated={console.log(updateJson.data)}
+          onRowRemoving={setDelete}
+          onRowRemoved={console.log(deleteJson.data)}
+          >
             <FilterRow visible={true}/>
             <HeaderFilter visible={true} />  
             <Editing

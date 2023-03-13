@@ -29,7 +29,7 @@ namespace oraclebam.Controllers
             return Ok(Lista);
         }
 
-        [HttpPost]
+        [HttpPost("post/{e}")]
         public async Task<ActionResult<MvSysSvxValueException>> AddValueException([FromBody] MvSysSvxValueException e)
         {
             MvSysSvxValueException Lista = await _repository.AddValueException(e);

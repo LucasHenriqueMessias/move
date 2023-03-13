@@ -1,12 +1,29 @@
 import React, {useEffect, useState} from 'react';
 import DataGrid, { Column, FilterRow, HeaderFilter, Editing } from 'devextreme-react/data-grid';
-//import SelectBox from 'devextreme-react/select-box';
-//import CheckBox from 'devextreme-react/check-box';
+
 
 
 const Exceptions = () => {
+    const ExceptionsJson = {
+      'sxCompany' : '', 
+                'sxModule' : '', 
+                'sxTable' : '', 
+                'sxColumn' : '', 
+                'sxComparison' : '', 
+                'sxValue' : '', 
+                'sxDescription' : '', 
+                'sxNote' : '', 
+                'sxUserCreated' : '', 
+                'sxDatetimeCreated' : '',
+                'sxUserAltered' : '', 
+                'sxDatetimeAltered' : '', 
+    }
+    const key = { 'sxCompany': ''}
 
     const [posts, setPosts] = useState([]);
+    const [insertJson, setInsert] = useState(ExceptionsJson);
+    const [updateJson, setUpdate] = useState(ExceptionsJson);
+    const [deleteJson, setDelete] = useState(key) 
 
     useEffect(() =>{
         fetch("https://localhost:7063/api/MvSysSxException")
@@ -27,7 +44,14 @@ const Exceptions = () => {
           filterSyncEnabled={true}
           repaintChangesOnly={true}
           highlightChanges={true}
-          showBorders={true}>
+          showBorders={true}
+          onRowInserting={setInsert}
+          onRowInserted={console.log(insertJson.data)}
+          onRowUpdating={setUpdate}
+          onRowUpdated={console.log(updateJson.data)}
+          onRowRemoving={setDelete}
+          onRowRemoved={console.log(deleteJson.data)}
+          >
             <FilterRow visible={true}/>
             <HeaderFilter visible={true} />    
             <Editing

@@ -5,8 +5,23 @@ import DataGrid, { Column, FilterRow, HeaderFilter, Editing } from 'devextreme-r
 
 
 const Value = () => {
-
+    const vjson = {
+      'svxCompany' : '', 
+      'sxDescription' : '', 
+      'svxAlphanumericValue' : '', 
+      'svxNumericValue' : '',
+      'svxDatetimeValue' : '',
+      'svxActive' : '', 
+      'svxUserCreated' : '', 
+      'svxDatetimeCreated' : '', 
+      'svxUserAltered' : '', 
+      'svxDatetimeAltered' : '',
+    }
+    const key = { 'svxCompany':''}
     const [posts, setPosts] = useState([]);
+    const [insertJson, setInsert] = useState(vjson);
+    const [updateJson, setUpdate] = useState(vjson);
+    const [deleteJson, setDelete] = useState(key);
 
     useEffect(() =>{
         fetch("https://localhost:7063/api/MvSysSvxValueException")
@@ -27,7 +42,14 @@ const Value = () => {
           filterSyncEnabled={true}
           repaintChangesOnly={true}
           highlightChanges={true}
-          showBorders={true}>
+          showBorders={true}
+          onRowInserting={setInsert}
+          onRowInserted={console.log(insertJson.data)}
+          onRowUpdating={setUpdate}
+          onRowUpdated={console.log(updateJson.data)}
+          onRowRemoving={setDelete}
+          onRowRemoved={console.log(deleteJson.data)}
+          >
             <FilterRow visible={true}/>
             <HeaderFilter visible={true} /> 
             <Editing

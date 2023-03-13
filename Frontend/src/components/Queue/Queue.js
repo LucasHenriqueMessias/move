@@ -5,8 +5,35 @@ import DataGrid, { Column, FilterRow, HeaderFilter, Editing } from 'devextreme-r
 
 
 const Queue = () => {
-
+    const qJSON = {
+      'sjqProcedureName' : '', 
+      'sjDescription' : '',
+      'sjqJob' : '',
+      'sjqDatetimeScheduled' : '',
+      'sjqStatus' : '',
+      'sjqInterval' : '',
+      'sjqSunday' : '',
+      'sjqMonday' : '',
+      'sjqTuesday' : '',
+      'sjqWednesday' : '',
+      'sjqThursday' : '',
+      'sjqFriday' : '',
+      'sjqSaturday' : '',
+      'sjqMessage' : '', 
+      'sjqFollowedByMail' : '',
+      'sjqUserCreated' : '', 
+      'sjqDatetimeCreated' : '',
+      'sjqUserUpdated' : '', 
+      'sjqDatetimeUpdated' : '',
+      'sjqTotalIteration' : '',
+      'sjqCurrentIteration' : ''
+    }
+    const key = { 'sjqProcedureName' : ''}
     const [posts, setPosts] = useState([]);
+    
+    const [insertJson, setInsert] = useState(qJSON);
+    const [updateJson, setUpdate] = useState(qJSON);
+    const [deleteJson, setDelete] = useState(key)
 
     useEffect(() =>{
         fetch("https://localhost:7063/api/MvSysSjqJobQueue")
@@ -27,7 +54,14 @@ const Queue = () => {
           filterSyncEnabled={true}
           repaintChangesOnly={true}
           highlightChanges={true}
-          showBorders={true}>
+          showBorders={true}
+          onRowInserting={setInsert}
+          onRowInserted={console.log(insertJson.data)}
+          onRowUpdating={setUpdate}
+          onRowUpdated={console.log(updateJson.data)}
+          onRowRemoving={setDelete}
+          onRowRemoved={console.log(deleteJson.data)}
+          >
             <FilterRow visible={true}/>
             <HeaderFilter visible={true} />       
             <Editing
