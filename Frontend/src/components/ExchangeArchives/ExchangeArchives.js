@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from 'react';
 
 import DataGrid, {
-  Column, FilterRow, HeaderFilter, Editing
+  Column, FilterRow, HeaderFilter, Editing, Popup, Form
 } from 'devextreme-react/data-grid';
+
+import { Item } from 'devextreme-react/form';
 
 
 const ExchangeArchives = () => {
@@ -61,11 +63,33 @@ const key = { 'sefId' : ''};
              <FilterRow visible={true}/>
             <HeaderFilter visible={true} />
             <Editing
-            mode="row"
+            mode="popup"
             allowUpdating={true}
             allowDeleting={true}
-            allowAdding={true} />
-            
+            allowAdding={true}>
+            <Popup title="Editing Row from Exchange Archives" showTitle={true} width={700} height={525} />
+            <Form>
+                <Item dataField="sefId" dataType="number"/>
+                <Item dataField="sefCompany"/> 
+                <Item dataField="sefOperation"/> 
+                <Item dataField="sefSourceHost"/> 
+                <Item dataField="sefSourceDir"/> 
+                <Item dataField="sefSourceFile"/> 
+                <Item dataField="sefDestHost"/> 
+                <Item dataField="sefDestDir"/> 
+                <Item dataField="sefDestFile"/> 
+                <Item dataField="sefBackupDir"/> 
+                <Item dataField="sefShare"/> 
+                <Item dataField="sefDestShare"/> 
+                <Item dataField="sefDeleteSource"/> 
+                <Item dataField="sefAppend"/> 
+                <Item dataField="sefUserAlt"/> 
+                <Item dataField="sefDateAlt" dataType="datetime" format="yyyy-mm-dd'T'hh:mm:ss"/> 
+                <Item dataField="sefSourceFtpUser"/> 
+                <Item dataField="sefDestFtpUser"/> 
+                <Item dataField="sefModule"/> 
+            </Form>
+            </Editing>
                 <Column dataField="sefId" dataType="number"/>
                 <Column dataField="sefCompany"/> 
                 <Column dataField="sefOperation"/> 

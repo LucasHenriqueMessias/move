@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import DataGrid, { Column, FilterRow, HeaderFilter, Editing } from 'devextreme-react/data-grid';
-//import SelectBox from 'devextreme-react/select-box';
-//import CheckBox from 'devextreme-react/check-box';
+import DataGrid, { Column, FilterRow, HeaderFilter, Editing, Popup, Form } from 'devextreme-react/data-grid';
+import { Item } from 'devextreme-react/form';
 
 
 const Queue = () => {
@@ -65,10 +64,37 @@ const Queue = () => {
             <FilterRow visible={true}/>
             <HeaderFilter visible={true} />       
             <Editing
-            mode="row"
+            mode="popup"
             allowUpdating={true}
             allowDeleting={true}
-            allowAdding={true} />
+            allowAdding={true}>
+            <Popup title="Editing Row from Queue" showTitle={true} width={700} height={525} />
+            <Form>
+                <Item dataField="sjqProcedureName"/> 
+                <Item dataField="sjDescription"/>
+                <Item dataField="sjqJob" dataType="number"/>
+                <Item dataField="sjqDatetimeScheduled" dataType="datetime" format="yyyy-mm-dd'T'hh:mm:ss"/>
+                <Item dataField="sjqStatus"/>
+                <Item dataField="sjqInterval"/>
+                <Item dataField="sjqSunday"/>
+                <Item dataField="sjqMonday"/>
+                <Item dataField="sjqTuesday"/>
+                <Item dataField="sjqWednesday"/>
+                <Item dataField="sjqThursday"/>
+                <Item dataField="sjqFriday"/>
+                <Item dataField="sjqSaturday"/>
+                <Item dataField="sjqMessage"/> 
+                <Item dataField="sjqFollowedByMail"/>
+                <Item dataField="sjqUserCreated"/> 
+                <Item dataField="sjqDatetimeCreated" dataType="datetime" format="yyyy-mm-dd'T'hh:mm:ss"/>
+                <Item dataField="sjqUserUpdated"/> 
+                <Item dataField="sjqDatetimeUpdated" dataType="datetime" format="yyyy-mm-dd'T'hh:mm:ss"/>
+                <Item dataField="sjqTotalIteration" dataType="number"/>
+                <Item dataField="sjqCurrentIteration" dataType="number"/>
+            </Form>
+            </Editing>
+
+
                 <Column dataField="sjqProcedureName"/> 
                 <Column dataField="sjDescription"/>
                 <Column dataField="sjqJob" dataType="number"/>

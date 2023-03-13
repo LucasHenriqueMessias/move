@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import DataGrid, { Column, FilterRow, HeaderFilter, Editing } from 'devextreme-react/data-grid';
-//import SelectBox from 'devextreme-react/select-box';
-//import CheckBox from 'devextreme-react/check-box';
+import DataGrid, { Column, FilterRow, HeaderFilter, Editing, Popup, Form } from 'devextreme-react/data-grid';
+import { Item } from 'devextreme-react/form';
 
 
 const Value = () => {
@@ -53,10 +52,25 @@ const Value = () => {
             <FilterRow visible={true}/>
             <HeaderFilter visible={true} /> 
             <Editing
-            mode="row"
+            mode="popup"
             allowUpdating={true}
             allowDeleting={true}
-            allowAdding={true} />      
+            allowAdding={true}>
+            <Popup title="Editing Row from Exceptions x Values" showTitle={true} width={700} height={525} />
+            <Form>
+                <Item dataField="svxCompany"/> 
+                <Item dataField="sxDescription"/> 
+                <Item dataField="svxAlphanumericValue"/> 
+                <Item dataField="svxNumericValue"/> 0
+                <Item dataField="svxDatetimeValue" dataType="datetime" format="yyyy-mm-dd'T'hh:mm:ss"/>
+                <Item dataField="svxActive"/> 
+                <Item dataField="svxUserCreated"/> 
+                <Item dataField="svxDatetimeCreated" dataType="datetime" format="yyyy-mm-dd'T'hh:mm:ss"/> 
+                <Item dataField="svxUserAltered"/> 
+                <Item dataField="svxDatetimeAltered" dataType="datetime" format="yyyy-mm-dd'T'hh:mm:ss"/>   
+            </Form>
+            </Editing>
+     
                 <Column dataField="svxCompany"/> 
                 <Column dataField="sxDescription"/> 
                 <Column dataField="svxAlphanumericValue"/> 

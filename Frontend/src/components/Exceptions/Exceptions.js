@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import DataGrid, { Column, FilterRow, HeaderFilter, Editing } from 'devextreme-react/data-grid';
-
+import DataGrid, { Column, FilterRow, HeaderFilter, Editing, Popup, Form } from 'devextreme-react/data-grid';
+import { Item } from 'devextreme-react/form';
 
 
 const Exceptions = () => {
@@ -55,10 +55,26 @@ const Exceptions = () => {
             <FilterRow visible={true}/>
             <HeaderFilter visible={true} />    
             <Editing
-            mode="row"
+            mode="popup"
             allowUpdating={true}
             allowDeleting={true}
-            allowAdding={true} />   
+            allowAdding={true}>
+            <Popup title="Editing Row from Exceptions" showTitle={true} width={700} height={525} />
+            <Form>
+                <Item dataField="sxCompany"/> 
+                <Item dataField="sxModule"/> 
+                <Item dataField="sxTable"/> 
+                <Item dataField="sxItem"/> 
+                <Item dataField="sxComparison"/> 
+                <Item dataField="sxValue"/> 
+                <Item dataField="sxDescription"/> 
+                <Item dataField="sxNote"/> 
+                <Item dataField="sxUserCreated"/> 
+                <Item dataField="sxDatetimeCreated" dataType="datetime" format="yyyy-mm-dd'T'hh:mm:ss"/>
+                <Item dataField="sxUserAltered"/> 
+                <Item dataField="sxDatetimeAltered" dataType="datetime" format="yyyy-mm-dd'T'hh:mm:ss"/> 
+            </Form>
+            </Editing>   
                 <Column dataField="sxCompany"/> 
                 <Column dataField="sxModule"/> 
                 <Column dataField="sxTable"/> 

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import DataGrid, { Column, FilterRow, HeaderFilter, Editing } from 'devextreme-react/data-grid';
-
+import DataGrid, { Column, FilterRow, HeaderFilter, Editing, Popup, Form } from 'devextreme-react/data-grid';
+import { Item } from 'devextreme-react/form';
 
 const Groups = () => {
 
@@ -44,10 +44,17 @@ const Groups = () => {
             <FilterRow visible={true}/>
             <HeaderFilter visible={true} />
             <Editing
-            mode="row"
+            mode="popup"
             allowUpdating={true}
             allowDeleting={true}
-            allowAdding={true} />       
+            allowAdding={true}>
+            <Popup title="Editing Row from Groups" showTitle={true} width={700} height={525} />
+            <Form>
+                <Item dataField="segCompany" dataType="number"/> 
+                <Item dataField="segGroupName"/> 
+                <Item dataField="segDescription"/>
+            </Form>
+            </Editing>      
                 <Column dataField="segCompany" dataType="number"/> 
                 <Column dataField="segGroupName"/> 
                 <Column dataField="segDescription"/> 

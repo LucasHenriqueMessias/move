@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import DataGrid, { Column, FilterRow, HeaderFilter, Editing } from 'devextreme-react/data-grid';
+import DataGrid, { Column, FilterRow, HeaderFilter, Editing, Popup, Form } from 'devextreme-react/data-grid';
+import { Item } from 'devextreme-react/form';
 
 const ExchangeOperations = () => {
 
@@ -50,10 +51,23 @@ const ExchangeOperations = () => {
             <FilterRow visible={true}/>
             <HeaderFilter visible={true} />   
             <Editing
-            mode="row"
+            mode="popup"
             allowUpdating={true}
             allowDeleting={true}
-            allowAdding={true} />    
+            allowAdding={true}>
+            <Popup title="Editing Row from Exchange Operations" showTitle={true} width={700} height={525} />
+            <Form>
+                <Item dataField="seoCompany"/> 
+                <Item dataField="seoSourceHost"/> 
+                <Item dataField="seoDestHost"/> 
+                <Item dataField="seoOperation"/> 
+                <Item dataField="seoUserAlt"/> 
+                <Item dataField="seoDateAlt" dataType="datetime" format="yyyy-mm-dd'T'hh:mm:ss"/>
+                <Item dataField="seoDescription"/> 
+                <Item dataField="seoSourceFtpUser"/> 
+                <Item dataField="seoDestFtpUser"/> 
+            </Form>
+            </Editing>
                 <Column dataField="seoCompany"/> 
                 <Column dataField="seoSourceHost"/> 
                 <Column dataField="seoDestHost"/> 
