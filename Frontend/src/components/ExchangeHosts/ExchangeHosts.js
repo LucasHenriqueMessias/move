@@ -54,7 +54,8 @@ const ExchangeHosts = () => {
             mode="popup"
             allowUpdating={true}
             allowDeleting={true}
-            allowAdding={true}>
+            allowAdding={true}
+            useIcons={true}>
             <Popup title="Editing Row From Exchange Archives Hosts" showTitle={true} width={700} height={525} />
             <Form>
                 <Item dataField="sehCompany"/> 

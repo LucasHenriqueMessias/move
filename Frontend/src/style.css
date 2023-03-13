@@ -1,6 +1,25 @@
-#gridContainer {
-    height: 440px;
+#style {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: var(--carbon-gray);
+
+    --schaeffler-green: #00893d;
+    --black: #000000;
+    --white: #ffffff;
+    --sunny-yellow: #ffe160;
+    --lime: #a1c861;
+    --nordic-blue: #1d9bb2;
+    --carbon-gray: #646464;
+    --green-gray: #c0c6bf;
+    --dark-blue-gray: #b6bac2;
+    --blue-gray: #ced5da;
+    --silver-gray: #e3e3e3;
+    --wrong-gray: #f0f3f4;
+    --red: rgb(163, 23, 57);
 }
+
 
 .options {
     padding: 20px;
@@ -24,4 +43,68 @@
 .option>.dx-selectbox {
     display: inline-block;
     vertical-align: middle;
+}
+
+.dx-datagrid-headers {
+    color: var(--schaeffler-green);
+}
+
+.dx-datagrid {
+    color: var(--carbon-gray);
+}
+
+.dx-datagrid .dx-link {
+    color: var(--schaeffler-green);
+}
+
+.dx-editor-with-menu .dx-filter-menu .dx-menu-item-content .dx-icon.dx-icon-filter-operation-default,
+.dx-filter-menu .dx-menu-item-content .dx-icon.dx-icon-filter-operation-default {
+    color: var(--schaeffler-green);
+}
+
+.dx-button {
+    margin-left: 0.5rem;
+}
+
+.dx-button-text {
+    color: var(--schaeffler-green);
+    line-height: revert;
+}
+
+.dx-button-has-text .dx-button-content {
+    text-align: center;
+}
+
+.dx-radiobutton-icon-checked .dx-radiobutton-icon-dot {
+    background: var(--schaeffler-green);
+}
+
+.dx-button-mode-contained .dx-icon {
+    color: var(--schaeffler-green)
+}
+.pageTitle {
+    padding-top: 2rem;
+    font-size: 1rem;
+    color: var(--schaeffler-green);
+    align-content: center;
+    text-align: center;
+    padding-left: 12.7rem;
+}
+
+.backButton {
+    position: relative;
+    width: 12.5%;
+    float: right;
+}
+
+.infoButton {
+    position: relative;
+    width: 13.5%;
+    float: left;
+}
+
+* {
+    /*font-family: SourceSansPro, "Helvetica Neue", Arial, Calibri;*/
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+        Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }

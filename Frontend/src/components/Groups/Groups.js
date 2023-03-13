@@ -47,7 +47,8 @@ const Groups = () => {
             mode="popup"
             allowUpdating={true}
             allowDeleting={true}
-            allowAdding={true}>
+            allowAdding={true}
+            useIcons={true}>
             <Popup title="Editing Row from Groups" showTitle={true} width={700} height={525} />
             <Form>
                 <Item dataField="segCompany" dataType="number"/> 

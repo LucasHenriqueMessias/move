@@ -49,7 +49,8 @@ const Procedures = () => {
             mode="popup"
             allowUpdating={true}
             allowDeleting={true}
-            allowAdding={true}>
+            allowAdding={true}
+            useIcons={true}>
             <Popup title="Editing Row from Procedures" showTitle={true} width={700} height={525} />
             <Form>
                 <Item dataField="sjProcedureName"/> 

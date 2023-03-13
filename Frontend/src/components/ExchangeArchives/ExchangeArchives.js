@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from 'react';
-
+import '../../style.css';
 import DataGrid, {
   Column, FilterRow, HeaderFilter, Editing, Popup, Form
 } from 'devextreme-react/data-grid';
+import 'devextreme/dist/css/dx.common.css';
+import 'devextreme/dist/css/dx.light.css';
 
 import { Item } from 'devextreme-react/form';
 
@@ -63,10 +65,11 @@ const key = { 'sefId' : ''};
              <FilterRow visible={true}/>
             <HeaderFilter visible={true} />
             <Editing
-            mode="popup"
+            mode="popup" 
             allowUpdating={true}
             allowDeleting={true}
-            allowAdding={true}>
+            allowAdding={true}
+            useIcons={true}>
             <Popup title="Editing Row from Exchange Archives" showTitle={true} width={700} height={525} />
             <Form>
                 <Item dataField="sefId" dataType="number"/>

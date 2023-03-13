@@ -55,7 +55,8 @@ const Value = () => {
             mode="popup"
             allowUpdating={true}
             allowDeleting={true}
-            allowAdding={true}>
+            allowAdding={true}
+            useIcons={true}>
             <Popup title="Editing Row from Exceptions x Values" showTitle={true} width={700} height={525} />
             <Form>
                 <Item dataField="svxCompany"/> 

@@ -49,7 +49,8 @@ const Sent = () => {
             mode="popup"
             allowUpdating={true}
             allowDeleting={true}
-            allowAdding={true}>
+            allowAdding={true}
+            useIcons={true}>
             <Popup title="Editing Row from E-mail Sent" showTitle={true} width={700} height={525} />
             <Form>
                 <Item dataField="ssmUsername"/> 

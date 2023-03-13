@@ -54,7 +54,8 @@ const ExchangeOperations = () => {
             mode="popup"
             allowUpdating={true}
             allowDeleting={true}
-            allowAdding={true}>
+            allowAdding={true}
+            useIcons={true}>
             <Popup title="Editing Row from Exchange Operations" showTitle={true} width={700} height={525} />
             <Form>
                 <Item dataField="seoCompany"/> 
